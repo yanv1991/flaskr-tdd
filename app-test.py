@@ -82,6 +82,11 @@ class FlaskrTestCase(unittest.TestCase):
         data = json.loads(rv.data)
         self.assertEqual(data['status'], 1)
 
+    def test_search_messages(self):
+        """Ensure the user can search messages"""
+        response = self.app.get('/search/?query=todo', content_type='html/text')
+        self.assertEqual(response.status_code, 200)
+
 
 if __name__ == '__main__':
     unittest.main()
